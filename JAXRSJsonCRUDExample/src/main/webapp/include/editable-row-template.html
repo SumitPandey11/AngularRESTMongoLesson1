@@ -1,0 +1,10 @@
+<div type="text/ng-template" id="edit">
+	<td><input type="text" ng-bind="country.id" ng-model="country.id"></td>
+	<!-- <td><input type="text" ng-bind="country.countryName" ng-model="country.countryName"></td> -->
+	<td><select ng-model="selectedCountry" ng-options="country.countryName for country in countryArray"></select></td>
+	<td><input type="text" ng-bind="country.population" ng-model="country.population"></td>
+	<td>
+		<button type="button" ng-click="tableRowCancel($index)">cancel</button>
+		<button type="button" ng-click="SaveRow($index)">Save</button>
+	</td>
+</div>

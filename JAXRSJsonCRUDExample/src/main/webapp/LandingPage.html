@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here111</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+<script src="http://underscorejs.org/underscore-min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+<script src="FrontEndScript.js"></script>
+
+<style>
+	input.ng-invalid {
+		background-color: red;
+	}
+	
+	input.ng-valid {
+		background-color: lightgreen;
+	}
+	input.ng-invalid-email {
+		background-color: pink;
+	}
+	
+	form.ng-pristine {
+	    background-color:lightblue;
+	}
+	form.ng-dirty {
+	    background-color:orange;
+	}
+</style>
+
+</head>
+
+<body ng-app="myApp">
+
+	<div ng-controller="myAppController">
+		<input type="button" value="Click me" ng-click="clickMeFunction()">
+		{{ message }} <br> <input type="button"
+			value="get Country ByIdFunction" ng-click="getCountryByIdFunction(1)">
+		<br> <input type="button" value="Multiple Call"
+			ng-click="multipleCall()"> <br> <input type="button"
+			value="Multiple Call URL" ng-click="loadDataFromUrls()">
+
+		<table class="table table-hover table-striped" border=1>
+			<tr ng-include="getRowTemplate($index)"
+				ng-repeat="country in countryArray">
+			</tr>
+
+		</table>
+		<br>
+		<button ng-click="addRow()" ng-show="isTableVisible()">Add
+			Row</button>
+
+		Show About us : <input type="checkbox" ng-model="showAboutUs">
+		<div ng-if="showAboutUs">ad ada dadada</div>
+
+		<div>
+			<select ng-model="currentRowCountry"
+				ng-options="country.countryName for country in countryArray">
+			</select>
+		</div>
+
+		<form name="myForm">
+			<input name="myInput" ng-model="myInputData" type="email" required> 
+			
+			<span style="color:red" ng-show="myForm.myInput.$dirty && myForm.myInput.$invalid"> You changed the value and its not valid now</span>
+			<p><span style="color:red" ng-show="myForm.myInput.$error.required" >Email is required.</span>
+			<span style="color:red" ng-show="myForm.myInput.$error.email">Type Valid Email </span>
+			
+		</form>
+
+		<p>The input's $valid state is: {{myForm.myInput.$valid}}</p>
+		<p>The text box is $invalid : {{myForm.myInput.$invalid}}</p>
+		
+		<p>The text box is $untouched : {{myForm.myInput.$untouched}}</p>
+		<p>The text box is $touched : {{myForm.myInput.$touched}}</p>
+		<p>The text box is $pristine (In its original condition; unspoiled): {{myForm.myInput.$pristine}}</p>
+		<p>The text box is $dirty : {{myForm.myInput.$dirty}}</p>
+		
+		<a href="non">noneditable</a>
+
+		<div ng-view></div>
+
+
+	</div>
+</body>
+</html>

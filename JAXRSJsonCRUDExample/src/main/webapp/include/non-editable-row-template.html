@@ -1,0 +1,7 @@
+<div type="text/ng-template" id="readonly">
+	<td>{{ country.id }}</td><td>{{country.countryName}}</td><td>{{country.population}}</td>
+	<td>
+		<button type="button" ng-click="tableRowEdit($index)">Edit</button>
+		<button type="button" ng-click="deleteRow($index)">Delete</button>
+	</td>
+</div>
