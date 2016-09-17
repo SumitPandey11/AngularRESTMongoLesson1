@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+<script src="FrontEndScript.js"></script>
+
+</head>
+
+<body ng-app ="myApp">
+
+<div ng-controller ="myAppController">
+	<input type="button" value="Click me" ng-click="clickMeFunction()">
+	{{ message }} 
+	<br>
+	<input type="button" value="get Country ByIdFunction" ng-click="getCountryByIdFunction(1)">
+	<br>
+	<input type="button" value="Multiple Call" ng-click="multipleCall()">
+	<br>
+	<input type="button" value="Multiple Call URL" ng-click="loadDataFromUrls()">
+	
+	<table class="table table-hover table-striped"  border=1>
+			<tr ng-include="getRowTemplate()"  ng-click="tableRowEdit($index)" ng-repeat="country in countryArray">
+					
+			</tr>
+	</table>
+	
+</div>
+</body>
+</html>
